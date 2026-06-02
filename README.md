@@ -60,7 +60,7 @@ GET /wallets/{address}/balance
 ## Stablecoins Soportadas
 
 ### USDT (Tether)
-<img src="https://blog.static.volet.com/uploads/IMG_20250317_121506_349_c95aad3bbe.png" alt="Logo" height="150">
+<img src="https://assets.klever.io/2025/08/all-about-usdt.jpg.webp" alt="Logo" height="150">
 
 **USDT (Tether)** es una stablecoin diseñada para mantener una paridad aproximada de 1:1 con el dólar estadounidense (USD). Es una de las criptomonedas más utilizadas para transferencias de valor, trading y pagos digitales debido a su alta liquidez y amplia adopción en los mercados de criptomonedas.
 
