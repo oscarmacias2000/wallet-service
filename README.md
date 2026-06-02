@@ -2,7 +2,7 @@
 
 
 <img src="https://www.svgrepo.com/show/367256/usdt.svg" alt="Logo" height="150">
-<img src="https://cdn.sanity.io/images/a7img0jk/production/b6b15ec908b2a22af25cf065e06f13d789bdfffc-2400x1350.png?rect=0,45,2400,1260&w=1200&h=630&q=90&fit=max&auto=format" alt="Logo" height="150">
+<img src="https://www.svgrepo.com/show/367255/usdc.svg" alt="Logo" height="150">
 
 
 ## Descripción
