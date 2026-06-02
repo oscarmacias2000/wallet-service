@@ -3,7 +3,7 @@
 
 <img src="https://www.svgrepo.com/show/367256/usdt.svg" alt="Logo" height="150">
 <img src="https://www.svgrepo.com/show/367255/usdc.svg" alt="Logo" height="150">
-
+<img src="https://www.svgrepo.com/show/428646/tron-crypto.svg" alt="Logo" height="150">
 
 ## Descripción
 
