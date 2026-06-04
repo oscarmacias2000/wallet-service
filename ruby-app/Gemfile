@@ -4,4 +4,45 @@ gem 'sinatra', '~> 3.0'
 gem 'sinatra-contrib', '~> 3.0'
 gem 'httparty', '~> 0.21.0'
 gem 'puma', '~> 6.0'
+
+
+# Cliente HTTP
+gem 'faraday', '~> 2.7'
+gem 'faraday-retry', '~> 2.0'
+
+# Cliente para TRON
+gem 'eth', '~> 0.5.0'        # Utilidades criptográficas
+
+# Base de datos y caché
+gem 'redis', '~> 5.0'
+gem 'pg', '~> 1.5'
+
+# JSON y procesamiento
 gem 'json', '~> 2.6'
+gem 'oj', '~> 3.14'          # JSON más rápido
+
+# Utilidades
+gem 'dotenv', '~> 2.8'       # Variables de entorno
+gem 'httplog', '~> 1.6'      # Logging HTTP
+
+# Monitoreo y logging
+gem 'logger', '~> 1.5'
+gem 'colorize', '~> 0.8.1'   # Colores en consola
+
+# Tareas programadas
+gem 'whenever', '~> 1.0'     # Cron jobs
+
+# Notificaciones
+gem 'telegram-bot-ruby', '~> 0.22'  # Bot de Telegram
+gem 'slack-notifier', '~> 2.4'      # Notificaciones Slack
+
+group :development do
+  gem 'pry', '~> 0.14'
+  gem 'rubocop', '~> 1.48'
+  gem 'rspec', '~> 3.12'
+end
+
+group :test do
+  gem 'webmock', '~> 3.18'
+  gem 'vcr', '~> 6.1'
+end

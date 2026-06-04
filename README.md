@@ -1,6 +1,7 @@
 # Wallet Service
 
-![Logo](https://www.svgrepo.com/show/367256/usdt.svg)
+
+<img src="https://www.svgrepo.com/show/367256/usdt.svg" alt="Logo" height="150">
 
 ## Descripción
 

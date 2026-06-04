@@ -1,0 +1,14 @@
+# docker-compose.yml
+services:
+  tron-wallet:
+    image: xanders/tron-wallet
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./wallet-data:/home
+    environment:
+      TRON_WALLET_DEFAULT_NODE_URL: "https://api.trongrid.io"
+      TRON_WALLET_DEFAULT_MAX_FEE: "100"
+      TRON_WALLET_PREDEFINED_CONTRACTS: "USDT:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t,USDC:TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8"
+      TRON_WALLET_ONE_INSECURE_PASSWORD: "your-secure-password"  # Change this!
+      TRON_WALLET_CHECK_IS_NODE_OUT_OF_SYNC: "false"

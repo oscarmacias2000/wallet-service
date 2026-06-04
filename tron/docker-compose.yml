@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  # Nodo TRON Completo
+  tron-node:
+    build: .
+    container_name: tron-fullnode
+    restart: unless-stopped
+    ports:
+      - "8090:8090"      # HTTP API
+      - "50051:50051"    # gRPC
+      - "9090:9090"      # Event API
+    volumes:
+      - ./data:/tron/data
+      - ./logs:/tron/logs
+      - ./config/tron.conf:/tron/FullNode/config.conf
+      - ./config/wallets.json:/tron/wallets.json
+    environment:
+      - TRON_NETWORK=${TRON_NETWORK:-mainnet}
+      - TRONGRID_APIKEY=${TRONGRID_APIKEY}
+      - MASTER_ADDRESS=${MASTER_ADDRESS}
+      - MASTER_PRIVATE_KEY=${MASTER_PRIVATE_KEY}
+      - USDT_CONTRACT=${USDT_CONTRACT}
+      - USDC_CONTRACT=${USDC_CONTRACT}
+    networks:
+      - tron-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/wallet/getnodeinfo"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Wallet Service para gestionar USDT/USDC
+  wallet-service:
+    image: xanders/tron-wallet:latest
+    container_name: tron-wallet
+    restart: unless-stopped
+    volumes:
+      - ./wallet-data:/home
+    environment:
+      - TRON_WALLET_DEFAULT_NODE_URL=${TRON_NODE_URL:-http://tron-node:8090}
+      - TRON_WALLET_DEFAULT_MAX_FEE=${MAX_FEE:-100}
+      - TRON_WALLET_ONE_INSECURE_PASSWORD=${WALLET_PASSWORD}
+      - TRON_WALLET_PREDEFINED_CONTRACTS=USDT:${USDT_CONTRACT},USDC:${USDC_CONTRACT}
+    depends_on:
+      - tron-node
+    networks:
+      - tron-network
+
+  # Monitor de Transferencias
+  monitor:
+    image: node:18-alpine
+    container_name: tron-monitor
+    volumes:
+      - ./scripts:/app
+    working_dir: /app
+    command: node monitor.js
+    environment:
+      - TRON_NODE_URL=${TRON_NODE_URL:-http://tron-node:8090}
+      - MASTER_ADDRESS=${MASTER_ADDRESS}
+      - USDT_CONTRACT=${USDT_CONTRACT}
+      - USDC_CONTRACT=${USDC_CONTRACT}
+      - ALERT_EMAIL=${ALERT_EMAIL}
+    depends_on:
+      - tron-node
+    networks:
+      - tron-network
+
+  # Redis para Cache (opcional)
+  redis:
+    image: redis:7-alpine
+    container_name: tron-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - tron-network
+
+  # Postgres para Storage (opcional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: tron-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=tron
+      - POSTGRES_USER=${DB_USER:-tron}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - tron-network
+
+networks:
+  tron-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  postgres-data:
