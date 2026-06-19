@@ -1,8 +1,5 @@
 # Wallet Service
-**<img src="https://www.svgrepo.com/show/367256/usdt.svg" alt="Logo" height="64" width="64"> <img src="https://www.svgrepo.com/show/367255/usdc.svg" alt="Logo" height="64" widht="64">
-<img src="https://www.svgrepo.com/show/428646/tron-crypto.svg" alt="Logo" height="64" widht="64">
-<img src="https://www.svgrepo.com/show/303146/ethereum-logo.svg" alt="Logo" height="64" widht="64">**
-
+<img src="https://www.svgrepo.com/show/367256/usdt.svg" alt="Logo" height="64" width="64"> 
 ## Descripción
 
 Wallet Service es una aplicación que permite la gestión segura de monederos digitales, incluyendo la creación de billeteras, consulta de saldos, firma y transmisión de transacciones, así como el almacenamiento cifrado de claves privadas.
